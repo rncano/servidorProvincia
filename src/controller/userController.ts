@@ -1,11 +1,13 @@
 import {Request, Response} from 'express';
 import userModel from '../models/userModel';
 import { Usuario } from 'models/usuarioModel';
+import jwt from 'jsonwebtoken';
 
 class UserController{
 
 //CRUD	
 public async list(req:Request,res:Response){
+    console.log(req.header("Authorization"));//Observamos el valor del token
     console.log(req.body);
     const usuarios:Usuario[] = await userModel.listar();
     console.log(usuarios);
@@ -66,7 +68,6 @@ else//Falta enviar el resultado estilizado a traves de una vista
     res.status(403).json({"login":"incorrecto","mensaje":"Usuario y/o contraseña incorrectos!!"});
     */
 
-    
     const { nombre, password } = req.body; /* hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.*/
     const result:Usuario = await userModel.buscarNombre(nombre);
     console.log(nombre); //comentarios para ver que llegan a la bd 
@@ -74,7 +75,8 @@ else//Falta enviar el resultado estilizado a traves de una vista
     console.log(result); //comentarios para ver que llegan a la bd 
     if (result !=null){
         if (result.nombre == nombre && result.password == password){
-            res.json({"login":"ok","mensaje":"Bienvenido!!"});
+            const token:string=jwt.sign({_id: result.id},"123456");
+            res.json({ "login":"ok","mensaje":"Bienvenido "+result.nombre,token:token});
             return;
         }
     }

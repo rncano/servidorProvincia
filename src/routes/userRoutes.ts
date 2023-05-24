@@ -1,6 +1,7 @@
 
     import userController from '../controller/userController';
     import { Router, Request, Response } from 'express';
+    import {TokenValidation} from "../lib/verifyToken";
 
     class UserRoutes{
         //Instanciamos el enrutador.
@@ -18,7 +19,7 @@
             });
             
             //CRUD
-		this.router.get('/list',userController.list);		
+        this.router.get('/list',TokenValidation,userController.list);		
 		this.router.post('/add',userController.addUser);		
 		this.router.get('/find/:id',userController.find);
 		this.router.put('/update/:id',userController.update);
