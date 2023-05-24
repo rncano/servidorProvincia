@@ -54,6 +54,7 @@ class UserModel {
 		return null;
 	}
 
+
 	//Devuelve 1 si logro crear un nuevo usuario de la tabla usuarios
 	async crear(usuario: Usuario) {
 		const result = (await this.db.query('INSERT INTO usuarios (nombre,email, password,rol) VALUES(?,?,?,?)',

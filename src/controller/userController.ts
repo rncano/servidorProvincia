@@ -56,7 +56,7 @@ public async login(req:Request,res:Response){
     console.log("Datos: " , req.body); //podemos pasar objetos separados por comas para inmprimir.
    
 
-    console.log("Usuario: " , req.body.usuario);
+    console.log("Usuario: " , req.body.nombre);
     console.log("Password: " , req.body.password);
 
     /*
@@ -67,18 +67,18 @@ else//Falta enviar el resultado estilizado a traves de una vista
     */
 
     
-    const { usuario, password } = req.body; /* hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.*/
-    const result:Usuario = await userModel.buscarNombre(usuario);
-    console.log(usuario); //comentarios para ver que llegan a la bd 
+    const { nombre, password } = req.body; /* hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.*/
+    const result:Usuario = await userModel.buscarNombre(nombre);
+    console.log(nombre); //comentarios para ver que llegan a la bd 
     console.log(password); //comentarios para ver que llegan a la bd 
     console.log(result); //comentarios para ver que llegan a la bd 
     if (result !=null){
-        if (result.nombre == usuario && result.password == password){
+        if (result.nombre == nombre && result.password == password){
             res.json({"login":"ok","mensaje":"Bienvenido!!"});
             return;
         }
     }
-    res.status(403).json({"login":"incorrecto","mensaje":"Usuario y/o contraseña incorrectos!!"});
+    res.json({"login":"incorrecto","mensaje":"Usuario y/o contraseña incorrectos!!"});
 }
 
 }

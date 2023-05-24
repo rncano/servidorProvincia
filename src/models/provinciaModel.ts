@@ -9,10 +9,15 @@ class ProvinciaModel {
 
 	async config() {//Parametro de conexion con la BD.
 		this.db = await createPool({
-			host: 'localhost',
-			user: 'root',
-			password: '',
-			database: 'bdprovincia',
+			//host: 'localhost',
+			//user: 'root',
+			//password: '',
+			//database: 'bdprovincia',
+			//connectionLimit: 10
+			host:'bxqorjm2x4whcm29z6vn-mysql.services.clever-cloud.com' ,
+			user:'udpjgpm11l3pjdsi' ,
+			password: 'tdKIvVKnro1ICxhBWbUj',
+			database: 'bxqorjm2x4whcm29z6vn' ,
 			connectionLimit: 10
 		});
 	}
@@ -45,8 +50,13 @@ class ProvinciaModel {
 	}
 
 	//Devuelve 1 si logro crear una nueva provincia  de la tabla provincias
+
 	async crearProvincia(provincia: Provincia) {
-		const result = (await this.db.query('INSERT INTO provincias SET ?', [provincia]))[0].affectedRows;
+		const result = (await this.db.query('INSERT INTO provincias (nombre,capital, descripcion,imagen) VALUES(?,?,?,?)',
+		[provincia.nombre,
+		provincia.capital,
+		provincia.descripcion,
+		provincia.imagen]))[0].affectedRows;
 		console.log(result);
 		return result;
 	}
