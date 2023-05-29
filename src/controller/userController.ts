@@ -76,7 +76,7 @@ else//Falta enviar el resultado estilizado a traves de una vista
     if (result !=null){
         if (result.nombre == nombre && result.password == password){
             const token:string=jwt.sign({_id: result.id},"123456");
-            res.json({ "login":"ok","mensaje":"Bienvenido "+result.nombre,token:token});
+            res.json({ "login":"ok","mensaje":"Bienvenido "+result.nombre,token:token,"rol": result.rol, "nombre":result.nombre});
             return;
         }
     }
