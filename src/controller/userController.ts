@@ -61,13 +61,6 @@ public async login(req:Request,res:Response){
     console.log("Usuario: " , req.body.nombre);
     console.log("Password: " , req.body.password);
 
-    /*
-    if(req.body.usuario=="Pepe"&&req.body.password=="123456")
-    res.json({"login":"ok","mensaje":"Bienvenido!!"});
-else//Falta enviar el resultado estilizado a traves de una vista
-    res.status(403).json({"login":"incorrecto","mensaje":"Usuario y/o contraseña incorrectos!!"});
-    */
-
     const { nombre, password } = req.body; /* hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.*/
     const result:Usuario = await userModel.buscarNombre(nombre);
     console.log(nombre); //comentarios para ver que llegan a la bd 
