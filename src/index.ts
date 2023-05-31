@@ -22,7 +22,18 @@ class Server{
         //Middlewares
         this.app.use(morgan('dev'));
 
+
         this.app.use(cors()); //iniciamos cors
+		this.app.options('*', cors()); // Agrega esto si necesitas manejar las solicitudes de método OPTIONS
+
+		this.app.use(
+		  cors({
+			origin: 'https://dsw-act3.web.app/', // Reemplaza esto con tu dominio permitido
+			methods: ['GET', 'POST', 'PUT', 'DELETE'],
+			allowedHeaders: ['Content-Type', 'Authorization'],
+		  })
+		);
+
         this.app.use(express.json()); //habilitamos el intercambio de objetos json entre aplicaciones
         this.app.use(express.urlencoded({extended:false}));//habilitamos para recibir datos a traves de formularios html.
 
