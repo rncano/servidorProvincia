@@ -28,7 +28,7 @@ class Server{
 
 		this.app.use(
 		  cors({
-			origin: 'https://dsw-act3.web.app/', // Reemplaza esto con tu dominio permitido
+			origin: 'https://dsw-act3.web.app', // Reemplaza esto con tu dominio permitido
 			methods: ['GET', 'POST', 'PUT', 'DELETE'],
 			allowedHeaders: ['Content-Type', 'Authorization'],
 		  })
