@@ -11,16 +11,16 @@ class UserModel {
 
 	async config() {//Parametro de conexion con la BD.
 		this.db = await createPool({
-			//host: 'localhost',
-			//user: 'root',
-			//password: '',
-			//database: 'bdprovincia',
-			//connectionLimit: 10
-			host:'bxqorjm2x4whcm29z6vn-mysql.services.clever-cloud.com' ,
-			user:'udpjgpm11l3pjdsi' ,
-			password: 'tdKIvVKnro1ICxhBWbUj',
-			database: 'bxqorjm2x4whcm29z6vn' ,
+			host: 'localhost',
+			user: 'root',
+			password: '',
+			database: 'bdprovincia',
 			connectionLimit: 10
+			// host:'bxqorjm2x4whcm29z6vn-mysql.services.clever-cloud.com' ,
+			// user:'udpjgpm11l3pjdsi' ,
+			// password: 'tdKIvVKnro1ICxhBWbUj',
+			// database: 'bxqorjm2x4whcm29z6vn' ,
+			// connectionLimit: 10
 		});
 	}
 	/* Nota: Aqui cada uno tiene que setear los parametros de su propio servidor MySQL / MariaDB.*/

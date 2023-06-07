@@ -19,7 +19,8 @@
             });
             
             //CRUD
-        this.router.get('/list',TokenValidation,userController.list);		
+       // this.router.get('/list',TokenValidation,userController.list);	
+         this.router.get('/list',TokenValidation,userController.list);	
 		this.router.post('/add',userController.addUser);		
 		this.router.get('/find/:id',userController.find);
 		this.router.put('/update/:id',userController.update);

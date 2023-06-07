@@ -66,6 +66,7 @@ public async login(req:Request,res:Response){
     console.log(nombre); //comentarios para ver que llegan a la bd 
     console.log(password); //comentarios para ver que llegan a la bd 
     console.log(result); //comentarios para ver que llegan a la bd 
+    
     if (result !=null){
         if (result.nombre == nombre && result.password == password){
             const token:string=jwt.sign({_id: result.id},"123456");
@@ -73,7 +74,10 @@ public async login(req:Request,res:Response){
             return;
         }
     }
-    res.json({"login":"incorrecto","mensaje":"Usuario y/o contraseña incorrectos!!"});
+    
+        res.json({"login":"incorrecto","mensaje":"Usuario y/o contraseña incorrectos!!"});
+    
+   
 }
 
 }

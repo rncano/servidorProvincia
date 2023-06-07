@@ -1,4 +1,5 @@
 
+import {TokenValidation} from "../lib/verifyToken";
 import provinciaController from '../controller/provinciaController';
 import { Router, Request, Response } from 'express';
 
@@ -18,7 +19,8 @@ class ProvinciaRoutes{
         });
         
         //CRUD 
-    this.router.get('/list',provinciaController.listProvincia);		
+    this.router.get('/list',TokenValidation,provinciaController.listProvincia);		
+  //  this.router.get('/provincias', TokenValidation, provinciaController.listProvincia);
     this.router.post('/add',provinciaController.addProvincia);		
     this.router.get('/find/:id',provinciaController.findProvincia);
     this.router.put('/update/:id',provinciaController.updateProvincia);

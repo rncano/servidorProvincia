@@ -26,6 +26,7 @@ class Server{
         this.app.use(cors()); //iniciamos cors
 		this.app.options('*', cors()); // Agrega esto si necesitas manejar las solicitudes de método OPTIONS
 
+		/* ESTA PARTE LA USABA PARA CONFIGURAR EL LIVE SERVER 
 		this.app.use(
 		  cors({
 			origin: 'https://dsw-act3.web.app', // Reemplaza esto con tu dominio permitido
@@ -33,7 +34,7 @@ class Server{
 			allowedHeaders: ['Content-Type', 'Authorization'],
 		  })
 		);
-
+		  */
         this.app.use(express.json()); //habilitamos el intercambio de objetos json entre aplicaciones
         this.app.use(express.urlencoded({extended:false}));//habilitamos para recibir datos a traves de formularios html.
 
