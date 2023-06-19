@@ -21,10 +21,10 @@
             //CRUD
        // this.router.get('/list',TokenValidation,userController.list);	
          this.router.get('/list',TokenValidation,userController.list);	
-		this.router.post('/add',userController.addUser);		
-		this.router.get('/find/:id',userController.find);
-		this.router.put('/update/:id',userController.update);
-		this.router.delete('/delete/:id',userController.delete);
+		this.router.post('/add',TokenValidation,userController.addUser);		
+		this.router.get('/find/:id',TokenValidation, userController.find);
+		this.router.put('/update/:id',TokenValidation,userController.update);
+		this.router.delete('/delete/:id',TokenValidation,userController.delete);
         this.router.post('/signin',userController.login);
         }
     }

@@ -54,10 +54,10 @@ public async addProvincia(req: Request, res: Response) {
      if (!provincia.descripcion) {
       return res.status(400).json({ error: 'La descripción de la provincia es obligatoria' });
     }
-     if (provincia.descripcion.length > 50) {
-      return res.status(400).json({ error: 'La descripción de la provincia no puede exceder los 50 caracteres' });
+     if (provincia.descripcion.length > 250) {
+      return res.status(400).json({ error: 'La descripción de la provincia no puede exceder los 250 caracteres' });
     }
-     if (/-|%|&|\|/g.test(provincia.descripcion)) {
+     if (!/^[A-Za-záéíóúÁÉÍÓÚ\s\.\,ñÑ]+$/.test(provincia.descripcion)) {
       return res.status(400).json({ error: 'La descripción de la provincia no puede contener los caracteres -%&||' });
     }
 
@@ -97,10 +97,10 @@ public async updateProvincia(req: Request, res: Response) {
   if (!provincia.descripcion) {
     return res.status(400).json({ error: 'La descripción de la provincia es obligatoria' });
   }
-   if (provincia.descripcion.length > 50) {
-    return res.status(400).json({ error: 'La descripción de la provincia no puede exceder los 50 caracteres' });
+   if (provincia.descripcion.length > 250) {
+    return res.status(400).json({ error: 'La descripción de la provincia no puede exceder los 250 caracteres' });
   }
-   if (/-|%|&|\|/g.test(provincia.descripcion)) {
+  if (!/^[A-Za-záéíóúÁÉÍÓÚ\s\.\,ñÑ]+$/.test(provincia.descripcion)) {
     return res.status(400).json({ error: 'La descripción de la provincia no puede contener los caracteres -%&||' });
   }
    if (!provincia.nombre) {
